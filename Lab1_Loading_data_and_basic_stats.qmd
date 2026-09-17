@@ -86,8 +86,9 @@ mean_min_temp_data <- daymet_data %>%
 #| label: task2
 
 filtered_south_data <- filter(daymet_data, region == "South Region")
-filtered_south_data <- daymet_data %>%
-  group_by()
+filtered_south_data <- filtered_south_data %>%
+  group_by(year, state) %>%
+  summarise(mean_min_temp = round((mean(median_tmin)), digits = 1))
   
 ```
 
@@ -168,7 +169,7 @@ In addition to this code, write a short summary of a pattern that's evident in t
 
 Besides class materials, what other sources of assistance did you use while completing this lab? These can include input from classmates, relevant material identified through web searches (e.g., Stack Overflow), or assistance from ChatGPT or other AI tools. How did these sources support your own learning in completing this lab?
 
-*Response here.*
+*Response here.* Used AI Overview to understand round() and why it was not wroking with the dataframe
 
 ### Lab Reflection
 
