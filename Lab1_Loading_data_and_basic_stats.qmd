@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Loading data into R, data transformation, and summary statistics
 
-**Your name:**
+**Your name: Alina Hashmi**
 
 **Overview and lab criteria:**
 
@@ -73,8 +73,9 @@ There are a lot of observations here, 452,448 to be exact. To get a better grasp
 
 ```{r}
 #| label: task1
-
-# Your code goes here
+mean_min_temp_data <- daymet_data %>%
+  group_by(year, state, region) %>%
+  summarize(mean_tmin = mean(median_tmin))
 ```
 
 ## Task 2
@@ -84,7 +85,10 @@ There are a lot of observations here, 452,448 to be exact. To get a better grasp
 ```{r}
 #| label: task2
 
-# Your code goes here
+filtered_south_data <- filter(daymet_data, region == "South Region")
+filtered_south_data <- daymet_data %>%
+  group_by()
+  
 ```
 
 ## Task 3
