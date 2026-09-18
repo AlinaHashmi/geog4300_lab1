@@ -98,8 +98,11 @@ filtered_south_data <- filtered_south_data %>%
 
 ```{r}
 #| label: task3
+filtered_south_data <- filtered_south_data %>%
+  mutate(year_num = parse_number(year))
 
-# Your code goes here
+ggplot(filtered_south_data, aes(x = year_num, y = mean_min_temp)) +
+  geom_line(aes(color = state))
 ```
 
 ## Task 4
