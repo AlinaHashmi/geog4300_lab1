@@ -175,10 +175,8 @@ In class, we covered ways of working with the Daymet API. Create a script below 
 In addition to this code, write a short summary of a pattern that's evident in the data you visualized.
 
 ```{r}
-utils::install.packages("daymetr", repos = "https://r-project.org")
 #| label: challenge
 
-install.packages("daymetr")
 library(daymetr)
 
 eastcobb_daymet<-download_daymet(site="east cobb",lat=33.978132718,lon=-84.453119107,start=2010,end=2025,internal=TRUE)
