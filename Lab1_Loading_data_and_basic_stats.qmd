@@ -76,6 +76,8 @@ There are a lot of observations here, 452,448 to be exact. To get a better grasp
 mean_min_temp_data <- daymet_data %>%
   group_by(year, region, state, cty_name) %>%
   summarize(mean_tmin = mean(median_tmin))
+
+kable(head(mean_min_temp_data))
 ```
 
 ## Task 2
@@ -89,6 +91,8 @@ filtered_south_data <- filter(daymet_data, region == "South Region")
 filtered_south_data <- filtered_south_data %>%
   group_by(year, state) %>%
   summarise(mean_min_temp = round((mean(median_tmin)), digits = 1))
+
+kable(head(filtered_south_data))
   
 ```
 
@@ -171,6 +175,7 @@ In class, we covered ways of working with the Daymet API. Create a script below 
 In addition to this code, write a short summary of a pattern that's evident in the data you visualized.
 
 ```{r}
+utils::install.packages("daymetr", repos = "https://r-project.org")
 #| label: challenge
 
 install.packages("daymetr")
