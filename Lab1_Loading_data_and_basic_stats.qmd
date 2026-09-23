@@ -126,7 +126,8 @@ filtered_south_wide <- filtered_south_data %>%
 ```{r}
 #| label: task5
 
-# Your code goes here
+mean_max_temp_precip <- daymet_data %>%
+  filter(year == "Y2015")
 ```
 
 ## Task 6
