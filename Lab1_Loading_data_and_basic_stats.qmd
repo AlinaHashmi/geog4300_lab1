@@ -74,7 +74,7 @@ There are a lot of observations here, 452,448 to be exact. To get a better grasp
 ```{r}
 #| label: task1
 mean_min_temp_data <- daymet_data %>%
-  group_by(year, state, region) %>%
+  group_by(year, region, state, cty_name) %>%
   summarize(mean_tmin = mean(median_tmin))
 ```
 
@@ -161,7 +161,7 @@ state_2015 <- daymet_data %>%
   )
 ```
 
-According to ?across, across() allows you to apply the same function to more than one column at a time. This greatly reduces repetitive code. In this case, across() is used to calculate the mean of the columns "median_tmax" and "sum_prcp" at the same time.
+According to ?across, the function across() allows you to apply the same function to more than one column at a time. This greatly reduces repetitive code. In this case, across() is used to calculate the mean of the columns "median_tmax" and "sum_prcp" at the same time.
 
 
 ## Challenge Question
@@ -183,17 +183,12 @@ eastcobb_data_2010_2025 <- eastcobb_data %>%
   filter(year == "2010" | year == "2025") %>%
   select(year, yday, tmax..deg.c.)
 
-eastcobb_data_2010_2025 <- eastcobb_data_2010_2025 %>%
-  pivot_wider(
-    names_from = year,
-    values_from = tmax..deg.c.
-  )
-
-
+ggplot(eastcobb_data_2010_2025, aes(x = yday, y = tmax..deg.c., color = factor(year))) +
+  geom_line()
 
 ```
 
-*Explanation goes here.*
+I downloaded daymet data for East Cobb, GA between 2010 and 2025 to see if temperatures have risen substantially as a result of climate change. During the winter months, temperatures were much higher in 2025 than they were in 2010; however, I was shocked to see that the temperatures were similar, or even lower in 2025, during the summer months.
 
 ## Final Submission Stuff
 
@@ -201,10 +196,10 @@ eastcobb_data_2010_2025 <- eastcobb_data_2010_2025 %>%
 
 Besides class materials, what other sources of assistance did you use while completing this lab? These can include input from classmates, relevant material identified through web searches (e.g., Stack Overflow), or assistance from ChatGPT or other AI tools. How did these sources support your own learning in completing this lab?
 
-I used AI Overview to understand the function round() and why it was not working with the dataframe.
+I used AI Overview to understand the function round() and why it was not working with the dataframe. I also used AI overview to help me in the challenge question when displaying the two years as distinct lines of data.
 
 ### Lab Reflection
 
 How do you feel about the work you did on this lab? Was it easy, moderate, or hard? What are the biggest things you learned by completing it?
 
-*Your response here.*
+I feel good about the work I did on this lab! I found it a little challenging when having to sort the data and using ggplot to graph the data.
