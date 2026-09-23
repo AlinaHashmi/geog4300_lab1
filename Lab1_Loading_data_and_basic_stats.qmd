@@ -98,10 +98,10 @@ filtered_south_data <- filtered_south_data %>%
 
 ```{r}
 #| label: task3
-filtered_south_data <- filtered_south_data %>%
+filtered_south_year <- filtered_south_data %>%
   mutate(year_num = parse_number(year))
 
-ggplot(filtered_south_data, aes(x = year_num, y = mean_min_temp)) +
+ggplot(filtered_south_year, aes(x = year_num, y = mean_min_temp)) +
   geom_line(aes(color = state))
 ```
 
@@ -112,7 +112,11 @@ ggplot(filtered_south_data, aes(x = year_num, y = mean_min_temp)) +
 ```{r}
 #| label: task4
 
-# Your code goes here
+filtered_south_wide <- filtered_south_data %>%
+  pivot_wider(
+    names_from = year,
+    values_from = mean_min_temp
+  )
 ```
 
 ## Task 5
