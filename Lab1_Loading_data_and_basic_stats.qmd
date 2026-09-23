@@ -127,14 +127,19 @@ filtered_south_wide <- filtered_south_data %>%
 #| label: task5
 
 mean_max_temp_precip <- daymet_data %>%
-  filter(year == "Y2015")
+  filter(year == "Y2015") %>%
+  group_by(region, state) %>%
+  summarize(mean_tmax = mean(median_tmax), mean_precip = mean(sum_prcp))
+
+ggplot(mean_max_temp_precip, aes(x = mean_tmax, y = mean_precip)) +
+  geom_line(aes(color = region))
 ```
 
 ## Task 6
 
 *In the space below, explain what each function in your code for task 5 does to the dataset in plain English.*
 
-*Your response here.*
+The filter() function sorts the table to only include data from 2015. The group_by() function then sorts the data first by region then by the states in that specific region. The summarize() function adds the columns median_tmax, which calculates the mean max temperature for the state in 2015, and mean_precip, which calculates the mean precipitation for the state in 2015. Finally, ggplot is used to graph both variables from the cleaned up data.
 
 ## Task 7
 
