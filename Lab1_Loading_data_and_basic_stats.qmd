@@ -117,6 +117,8 @@ filtered_south_wide <- filtered_south_data %>%
     names_from = year,
     values_from = mean_min_temp
   )
+
+kable(head(filtered_south_wide))
 ```
 
 ## Task 5
@@ -171,7 +173,24 @@ In addition to this code, write a short summary of a pattern that's evident in t
 ```{r}
 #| label: challenge
 
-# Your code goes here
+install.packages("daymetr")
+library(daymetr)
+
+eastcobb_daymet<-download_daymet(site="east cobb",lat=33.978132718,lon=-84.453119107,start=2010,end=2025,internal=TRUE)
+eastcobb_data<-eastcobb_daymet$data
+
+eastcobb_data_2010_2025 <- eastcobb_data %>%
+  filter(year == "2010" | year == "2025") %>%
+  select(year, yday, tmax..deg.c.)
+
+eastcobb_data_2010_2025 <- eastcobb_data_2010_2025 %>%
+  pivot_wider(
+    names_from = year,
+    values_from = tmax..deg.c.
+  )
+
+
+
 ```
 
 *Explanation goes here.*
@@ -182,7 +201,7 @@ In addition to this code, write a short summary of a pattern that's evident in t
 
 Besides class materials, what other sources of assistance did you use while completing this lab? These can include input from classmates, relevant material identified through web searches (e.g., Stack Overflow), or assistance from ChatGPT or other AI tools. How did these sources support your own learning in completing this lab?
 
-*Response here.* Used AI Overview to understand round() and why it was not wroking with the dataframe
+I used AI Overview to understand the function round() and why it was not working with the dataframe.
 
 ### Lab Reflection
 
