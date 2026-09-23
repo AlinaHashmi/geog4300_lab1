@@ -159,7 +159,7 @@ state_2015 <- daymet_data %>%
   )
 ```
 
-{Your response here}
+According to ?across, across() allows you to apply the same function to more than one column at a time. This greatly reduces repetitive code. In this case, across() is used to calculate the mean of the columns "median_tmax" and "sum_prcp" at the same time.
 
 
 ## Challenge Question
