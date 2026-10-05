@@ -138,7 +138,7 @@ mean_max_temp_precip <- daymet_data %>%
   summarize(mean_tmax = mean(median_tmax), mean_precip = mean(sum_prcp))
 
 ggplot(mean_max_temp_precip, aes(x = mean_tmax, y = mean_precip)) +
-  geom_line(aes(color = region))
+  geom_point(aes(color = region))
 ```
 
 ## Task 6
